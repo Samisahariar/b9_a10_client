@@ -1,0 +1,72 @@
+import { createContext, useEffect, useState } from "react";
+import PropTypes from "prop-types"
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import auth from "../../firebase.config";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider } from "firebase/auth";
+
+
+export const AuthContext = createContext()
+
+const AuthContextData = ({ children }) => {
+    const [user, setUser] = useState(null)
+    const [loader, setLoader] = useState(true)
+    const [userName, setUserName] = useState("")
+
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentuser => {
+            setUser(currentuser)
+            setLoader(false)
+        })
+        return () => {
+            unsubscribe()
+        }
+    }, [])
+
+
+    const createUser = (email, password) => {
+        setLoader(true)
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+
+    const signIn = (email, password) => {
+        setLoader(true)
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
+    const logOut = () => {
+        setLoader(true)
+        return signOut(auth)
+    }
+
+    const providergoogle = new GoogleAuthProvider();
+    const googlelogin = () => {
+        setLoader(true)
+        return signInWithPopup(auth, providergoogle)
+    }
+
+
+    const providergit = new GithubAuthProvider();
+    const gitlogin = () => {
+        setLoader(true)
+        return signInWithPopup(auth, providergit)
+    }
+
+    const name = "sami"
+
+
+    const authinfo = { name, user, createUser, signIn, logOut, loader, setUser, userName, setUserName, googlelogin, gitlogin }
+
+
+    return (
+        <AuthContext.Provider value={authinfo}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
+AuthContextData.propTypes = {
+    children: PropTypes.node
+}
+
+export default AuthContextData;
