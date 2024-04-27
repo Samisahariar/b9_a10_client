@@ -13,6 +13,7 @@ import My_Art_Craft_List from './components/myartandcraftlist/My_Art_Craft_List.
 import Add_Craft_Item from './components/addcraftitem/Add_Craft_Item.jsx';
 import AuthContextData from './components/authcontextdata/AuthContextData.jsx';
 import Register from './components/register/Register.jsx';
+import Private from './components/private/Private.jsx';
 
 
 
@@ -28,14 +29,16 @@ const router = createBrowserRouter([
       {
         path: "/allartandcraft",
         element: <AllArtAndCraft></AllArtAndCraft>
+        /* loader: ({ params }) => params.email */
       },
       {
         path: "/login",
         element: <Login></Login>
       },
       {
-        path: "/myartcraft",
-        element: <My_Art_Craft_List></My_Art_Craft_List>
+        path: "/myartcraft/:email",
+        element: <Private><My_Art_Craft_List></My_Art_Craft_List></Private>,
+        loader: ({params}) => fetch(`http://localhost:5000/${params.email}`)
       },
       {
         path: "/addcraftitem",

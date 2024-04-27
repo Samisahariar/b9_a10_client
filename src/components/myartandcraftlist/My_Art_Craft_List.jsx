@@ -1,14 +1,20 @@
 import { useContext } from "react";
 import { AuthContext } from "../authcontextdata/AuthContextData";
+import { useLoaderData, useParams } from "react-router-dom";
+import Card from "../card/Card";
 
 const My_Art_Craft_List = () => {
 
-    const data = useContext(AuthContext)
-    
+    const { user } = useContext(AuthContext);
+
+    const userData1 = useLoaderData()
+    const params = useParams();
 
     return (
-        <div className="bg-white dark:bg-black">
-            this is my art craft section
+        <div className="bg-white dark:bg-black mt-[6%]">
+            {
+                userData1.map((singleData, idx) => <Card data={singleData} key={idx}></Card>)
+            }
         </div>
     );
 };

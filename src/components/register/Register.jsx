@@ -14,7 +14,7 @@ const Register = () => {
     const { setUser, createUser, loader, setLoader, logOut } = useContext(AuthContext)
     const navigate = useNavigate();
 
-    const tohomepage = () =>{
+    const tohomepage = () => {
         navigate("/")
         document.getElementById('my_modal_1').showModal()
     }
@@ -30,19 +30,25 @@ const Register = () => {
         createUser(email, password)
             .then(res => {
                 setUser(null)
-                setLoader(false)
-                setTimeout(
-                    () => {
-                        tohomepage()
-                    }
-                ,2000)
-                Swal.fire({
-                    position: "middle",
-                    icon: "success",
-                    title: "Registration Successfull!!",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
+                logOut()
+                    .then(res => {
+                        setLoader(false)
+                        setTimeout(
+                            () => {
+                                tohomepage()
+                            }
+                            , 2000)
+                        Swal.fire({
+                            position: "middle",
+                            icon: "success",
+                            title: "Registration Successfull!!",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                    })
+                    .catch(error => console.log(error))
+
             })
             .catch(error => {
                 setLoader(false);
@@ -51,7 +57,7 @@ const Register = () => {
                     title: "Oops...",
                     text: `${error.message}`,
                     footer: '<a href="#">Why do I have this issue?</a>'
-                  });
+                });
             })
 
         console.log(name, email, password, checked)

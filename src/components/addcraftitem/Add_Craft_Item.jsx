@@ -18,7 +18,7 @@ const Add_Craft_Item = () => {
         const description = form.description.value;
         const newItem = { email, username, photo, rating, itemname, subcategory, price, customization, processingtime, stockstatus, description }
         console.log(newItem)
-        fetch(`http://localhost:5000/${subcategory}`, {
+        fetch(`http://localhost:5000/data`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
