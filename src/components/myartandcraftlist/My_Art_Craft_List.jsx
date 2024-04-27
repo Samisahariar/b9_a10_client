@@ -4,7 +4,7 @@ import { AuthContext } from "../authcontextdata/AuthContextData";
 const My_Art_Craft_List = () => {
 
     const data = useContext(AuthContext)
-    console.log(data.name)
+    
 
     return (
         <div className="bg-white dark:bg-black">

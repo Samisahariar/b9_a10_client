@@ -1,9 +1,50 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { useState, useRef } from "react";
+import google from "../../assets/images/google-symbol.png";
+import github from "../../assets/images/github.png"
+import { AuthContext } from "../authcontextdata/AuthContextData";
+import ClipLoader from "react-spinners/ClipLoader";
+import Swal from 'sweetalert2'
 
 
 const NavBar = () => {
 
+    const { user, loader, setLoader, name, logOut, signIn } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    const handletoRegister = () =>{
+        navigate('/register')
+    }
+    const handlelogin = () =>{
+
+    }
+
+    const handlelogout = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut()
+                    .then(res => {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your file has been deleted.",
+                            icon: "success"
+                        });
+                    })
+
+            }
+        });
+    }
 
     const navmenus = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -31,15 +72,55 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link /* to="/login" */><button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()} >Login</button></Link>
+                {
+                    loader && <ClipLoader
+                        loading={loader}
+                        size={10}
+                        aria-label="Loading Spinner"
+                        data-testid="loader"
+                    />
+                }
+                {
+                    user ? <button className="btn btn-primary" onClick={handlelogout}>Log-Out</button> : <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()} >Login</button>
+                }
                 <dialog id="my_modal_1" className="modal">
                     <div className="modal-box">
                         <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                         </form>
-                        <h3 className="font-bold text-lg">Hello!</h3>
-                        <p className="py-4">Press ESC key or click on ✕ button to close</p>
+                        <>
+                            <form className="card-body" /* onSubmit={handlethelogin} */ method="dialog">
+                                <h3 className="text-center text-3xl font-semibold">LOG-IN</h3>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
+                                    </label>
+                                    <input type="email"
+                                        placeholder="email"
+                                        name="email"
+                                        /* ref={emailRef} */
+                                        className="input input-bordered" required />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Password</span>
+                                    </label>
+                                    <input type="password" placeholder="password" name="password" className="input input-bordered" required />
+                                </div>
+                                <p className="text-center">Also log-in With :</p>
+                                <div className="flex justify-center gap-2">
+                                    <img src={google} alt="" className="w-8 h-8 cursor-pointer border border-1 border-white rounded-full p-2" />
+                                    <img src={github} alt="" className="w-8 h-8 cursor-pointer border border-1 border-white rounded-full p-1" />
+                                </div>
+                                <div className="form-control">
+                                    <button className="btn btn-primary" onClick={handlelogin}>Login</button>
+                                </div>
+                            </form>
+                            <form method="dialog">
+                                <div>Are You new ? <button className="text-blue-500" onClick={handletoRegister}>Register</button></div>
+                            </form>
+                        </>
                     </div>
                 </dialog>
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">

@@ -12,6 +12,7 @@ import Login from './components/login-page/Login.jsx';
 import My_Art_Craft_List from './components/myartandcraftlist/My_Art_Craft_List.jsx';
 import Add_Craft_Item from './components/addcraftitem/Add_Craft_Item.jsx';
 import AuthContextData from './components/authcontextdata/AuthContextData.jsx';
+import Register from './components/register/Register.jsx';
 
 
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/addcraftitem",
         element: <Add_Craft_Item></Add_Craft_Item>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
       }
     ]
   },
