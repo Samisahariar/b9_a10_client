@@ -14,6 +14,7 @@ import Add_Craft_Item from './components/addcraftitem/Add_Craft_Item.jsx';
 import AuthContextData from './components/authcontextdata/AuthContextData.jsx';
 import Register from './components/register/Register.jsx';
 import Private from './components/private/Private.jsx';
+import CardDetails from './components/cardDetails/CardDetails.jsx';
 
 
 
@@ -28,8 +29,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/allartandcraft",
-        element: <AllArtAndCraft></AllArtAndCraft>
-        /* loader: ({ params }) => params.email */
+        element: <AllArtAndCraft></AllArtAndCraft>,
+        loader: () => fetch("http://localhost:5000/alldata")
       },
       {
         path: "/login",
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
+      },
+      {
+        path: "/carddetails/:id",
+        element: <CardDetails></CardDetails>,
+        loader: ({params}) => params.id
       }
     ]
   },
