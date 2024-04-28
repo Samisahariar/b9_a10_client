@@ -15,6 +15,7 @@ import AuthContextData from './components/authcontextdata/AuthContextData.jsx';
 import Register from './components/register/Register.jsx';
 import Private from './components/private/Private.jsx';
 import CardDetails from './components/cardDetails/CardDetails.jsx';
+import UpDatePage from './components/updatepage/UpDatePage.jsx';
 
 
 
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
         path: "/carddetails/:id",
         element: <Private><CardDetails></CardDetails></Private>,
         loader: ({params}) => fetch(`http://localhost:5000/user/${params.id}`)
+      },
+      {
+        path: "/updatepage/:id",
+        element: <UpDatePage></UpDatePage>,
+        loader: ({params}) => params.id
       }
     ]
   },

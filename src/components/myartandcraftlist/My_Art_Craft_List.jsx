@@ -1,11 +1,12 @@
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../authcontextdata/AuthContextData";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Card from "../card/Card";
 import Swal from 'sweetalert2';
 
 const My_Art_Craft_List = () => {
     const { user, userData, setUserData } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const { email } = useParams();
 
@@ -51,12 +52,10 @@ const My_Art_Craft_List = () => {
 
             }
         });
-
-
     }
 
     const handlededitbutton = (id) => {
-        console.log(id)
+        navigate(`/updatepage/${id}`)
     }
 
     return (
