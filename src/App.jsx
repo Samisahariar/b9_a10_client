@@ -18,8 +18,8 @@ const App = () => {
 
   return (
     <div /* className={`${dark && "dark"}`} */>
-      <NavBar></NavBar>
-      <Outlet></Outlet>
+        <NavBar></NavBar>
+        <Outlet></Outlet>
       <button className="p-2 rounded-full fixed bottom-10 right-10 z-10 text-white bg-black dark:bg-white dark:text-black" onClick={handledark}>{dark ? "LIGHT" : "DARK"}</button>
     </div>
   );

@@ -10,6 +10,7 @@ export const AuthContext = createContext()
 const AuthContextData = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loader, setLoader] = useState(false)
+    const [userData, setUserData] = useState(null)
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentuser => {
@@ -50,7 +51,7 @@ const AuthContextData = ({ children }) => {
     const name = "sami"
 
 
-    const authinfo = { name, user, createUser, signIn, logOut, loader, setLoader, setUser, googlelogin, gitlogin}
+    const authinfo = { name, user, createUser, signIn, logOut, loader, setLoader, setUser, googlelogin, gitlogin, userData, setUserData}
 
 
     return (

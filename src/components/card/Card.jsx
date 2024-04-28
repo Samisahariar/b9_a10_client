@@ -6,20 +6,26 @@ import { MdEditSquare } from "react-icons/md";
 import { MdDeleteForever } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../authcontextdata/AuthContextData";
+import { CgDetailsMore } from "react-icons/cg";
 
-const Card = ({ data }) => {
+const Card = ({ data, handlededitbutton, handledelbutton }) => {
     const navigate = useNavigate()
 
     const { customization, description, itemname, photo, price, processingtime, rating, stockstatus, subcategory, _id } = data
-    const slicedDes = description.slice(1, 80)
+    const slicedDes = description.slice(1, 80);
 
-    const tothecarddetails = (id) =>{
-        console.log(id)
+    const { userData, setUserData } = useContext(AuthContext)
+
+    const tothecarddetails = (id) => {
         navigate(`/carddetails/${id}`)
     }
 
+
+
     return (
-        <div className="card card-side bg-base-100 shadow-xl cursor-pointer" onClick={() =>tothecarddetails(_id)}>
+        <div className="card card-side bg-base-100 shadow-xl cursor-pointer">
             <div className="w-[40%]"><img src={photo} alt="Movie" className="rounded-xl bg-cover" /></div>
             <div className=" flex justify-between border-white border w-[60%] items-center">
                 <div className=" space-y-1 p-1">
@@ -40,9 +46,9 @@ const Card = ({ data }) => {
 
                 </div>
                 <div className="join join-vertical gap-1">
-                    <button className="btn text-xl"><MdEditSquare /></button>
-                    <button className="btn text-xl"><MdDeleteForever /></button>
-                    <button className="btn text-xl"><MdFavoriteBorder /></button>
+                    <button className="btn text-xl" onClick={() => handlededitbutton(_id)}><MdEditSquare /></button>
+                    <button className="btn text-xl" onClick={() =>handledelbutton(_id)}><MdDeleteForever /></button>
+                    <button className="btn text-xl" onClick={() =>tothecarddetails(_id)}><CgDetailsMore /></button>
                 </div>
             </div>
         </div>

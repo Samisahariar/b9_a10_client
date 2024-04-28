@@ -13,7 +13,7 @@ const TableRow = ({ tableRowData, number }) => {
             <td>{rating}</td>
             <td>{stockstatus}</td>
             <td>{customization}</td>
-            <td><Link><span>View Details</span></Link></td>
+            <td><Link to={`/carddetails/${_id}`}><span>View Details</span></Link></td>
         </tr>
     );
 };

@@ -78,7 +78,7 @@ const NavBar = () => {
     </>
 
     return (
-        <div className="navbar dark:bg-base-100 bg-white border-b-2 border-black dark:border-white fixed top-0 z-200">
+        <div className="navbar dark:bg-base-100 bg-white border-b-2 border-black dark:border-white">
             <ToastContainer
                 position="top-right"
                 autoClose={2000}

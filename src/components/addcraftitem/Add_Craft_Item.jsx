@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 
 const Add_Craft_Item = () => {
 
@@ -25,9 +27,15 @@ const Add_Craft_Item = () => {
             },
             body: JSON.stringify(newItem)
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
+            .then(res => {
+                Swal.fire({
+                    title: "Item is Added!!",
+                    text: "Bye!!",
+                    icon: "success"
+                });
+            })
+            .catch(error => {
+                console.log(error)
             })
     }
 
@@ -111,7 +119,7 @@ const Add_Craft_Item = () => {
                         <textarea className="textarea textarea-bordered h-24 w-full" placeholder="Description" name="description"></textarea>
                     </label>
                 </div>
-                <input type="submit" value="ADD" className="bg-white w-[80%] ml-[10%] mt-10 p-2 rounded-xl cursor-pointer" />
+                <input type="submit" value="ADD" className="bg-white w-[80%] ml-[10%] mt-10 p-2 rounded-xl cursor-pointer btn" />
             </form>
         </div>
     );
