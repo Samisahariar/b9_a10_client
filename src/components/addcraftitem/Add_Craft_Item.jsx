@@ -19,7 +19,6 @@ const Add_Craft_Item = () => {
         const stockstatus = form.stockstatus.value;
         const description = form.description.value;
         const newItem = { email, username, photo, rating, itemname, subcategory, price, customization, processingtime, stockstatus, description }
-        console.log(newItem)
         fetch(`http://localhost:5000/data`, {
             method: 'POST',
             headers: {
@@ -77,11 +76,18 @@ const Add_Craft_Item = () => {
                         </div>
                         <input type="text" placeholder="Item-name" className="input input-bordered w-full" name="itemname" required />
                     </label>
-                    <label className="form-control w-[50%]">
+                    <label className="form-control w-full max-w-xs">
                         <div className="label">
-                            <span className="label-text">Sub-Category Name</span>
+                            <span className="label-text">Sub-Category</span>
                         </div>
-                        <input type="text" placeholder="Subcategory" className="input input-bordered w-full" name="subcategory" />
+                        <select className="select select-bordered" name='subcategory'>
+                            <option selected>Wooden Furnitures and sculptures</option>
+                            <option>Wooden Home Decor</option>
+                            <option>Woodrn Utensils and Kitchenare</option>
+                            <option>Jute Home Decor</option>
+                            <option>Jute KitchenWare and utensils</option>
+                            <option>Jute and wooden jewellery</option>
+                        </select>
                     </label>
                 </div>
                 <div className="flex border border-black gap-2 w-[80%] mx-auto">
@@ -92,11 +98,15 @@ const Add_Craft_Item = () => {
                         </div>
                         <input type="text" placeholder="price" className="input input-bordered w-full" name="price" />
                     </label>
-                    <label className="form-control w-[50%]">
+                    <label className="form-control w-full max-w-xs">
                         <div className="label">
-                            <span className="label-text">Is it Customizable?</span>
+                            <span className="label-text">Customization</span>
+                            
                         </div>
-                        <input type="text" placeholder="customization (yes/no)" className="input input-bordered w-full" name="customization" />
+                        <select className="select select-bordered" name='customization'>
+                            <option selected>Yes</option>
+                            <option>No</option>
+                        </select>
                     </label>
                     <label className="form-control w-[50%]">
                         <div className="label">
@@ -104,11 +114,14 @@ const Add_Craft_Item = () => {
                         </div>
                         <input type="text" placeholder="time" className="input input-bordered w-full" name="processingtime" />
                     </label>
-                    <label className="form-control w-[50%]">
+                    <label className="form-control w-full max-w-xs">
                         <div className="label">
-                            <span className="label-text">Stock Status ?</span>
+                            <span className="label-text">What is the stock status?</span>
                         </div>
-                        <input type="text" placeholder="stock" className="input input-bordered w-full" name="stockstatus" />
+                        <select className="select select-bordered" name='stockstatus'>
+                            <option selected>In Stock</option>
+                            <option>Made To Order</option>
+                        </select>
                     </label>
                 </div>
                 <div className="flex border border-black gap-2 w-[80%] mx-auto">

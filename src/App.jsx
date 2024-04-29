@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css"
 import NavBar from "./components/navbar/NavBar";
 import { Outlet } from "react-router-dom";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   const [dark, setDark] = useState(false)
@@ -18,8 +19,9 @@ const App = () => {
 
   return (
     <div /* className={`${dark && "dark"}`} */>
-        <NavBar></NavBar>
-        <Outlet></Outlet>
+      <NavBar></NavBar>
+      <Outlet></Outlet>
+      <Footer></Footer>
       <button className="p-2 rounded-full fixed bottom-10 right-10 z-10 text-white bg-black dark:bg-white dark:text-black" onClick={handledark}>{dark ? "LIGHT" : "DARK"}</button>
     </div>
   );

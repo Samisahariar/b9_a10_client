@@ -1,11 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../authcontextdata/AuthContextData";
 import { useContext } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 
 const Register = () => {
@@ -59,8 +59,6 @@ const Register = () => {
                     footer: '<a href="#">Why do I have this issue?</a>'
                 });
             })
-
-        console.log(name, email, password, checked)
         /* setUser(null)
         createUser() */
 

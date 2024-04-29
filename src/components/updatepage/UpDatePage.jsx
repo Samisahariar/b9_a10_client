@@ -1,13 +1,17 @@
+import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../authcontextdata/AuthContextData';
 
 
 const UpDatePage = () => {
 
+    const { id } = useParams()
 
+    const { user } = useContext(AuthContext);
 
     const handletheUpdateCraft = (event) => {
         event.preventDefault();
- 
         const form = event.target;
         const email = form.useremail.value;
         const username = form.username.value;
@@ -21,7 +25,25 @@ const UpDatePage = () => {
         const stockstatus = form.stockstatus.value;
         const description = form.description.value;
         const newItem = { email, username, photo, rating, itemname, subcategory, price, customization, processingtime, stockstatus, description }
-        console.log(newItem)
+        fetch(`http://localhost:5000/updatepage/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newItem)
+        })
+
+            .then(res => {
+                console.log(res)
+                Swal.fire({
+                    position: "middle",
+                    icon: "success",
+                    title: "This Item Is Updated!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+
     }
 
 
@@ -34,28 +56,27 @@ const UpDatePage = () => {
                         <div className="label">
                             <span className="label-text">What is your E-Mail?</span>
                         </div>
-                        <input type="text" placeholder="E-Mail" className="input input-bordered w-full" name="useremail" />
+                        <input type="text" placeholder="E-Mail" className="input input-bordered w-full" name="useremail" defaultValue={user?.email} readOnly />
                     </label>
                     <label className="form-control w-[50%]">
                         <div className="label">
                             <span className="label-text">What is your Name?</span>
                         </div>
-                        <input type="text" placeholder="User-Name" className="input input-bordered w-full" name="username" />
+                        <input type="text" placeholder="User-Name" className="input input-bordered w-full" name="username" required />
                     </label>
                 </div>
                 <div className="flex border border-black gap-2 w-[80%] mx-auto">
-
                     <label className="form-control w-[50%]">
                         <div className="label">
                             <span className="label-text">Photo-URL</span>
                         </div>
-                        <input type="text" placeholder="Image" className="input input-bordered w-full" name="photo" />
+                        <input type="text" placeholder="Image" className="input input-bordered w-full" name="photo" required />
                     </label>
                     <label className="form-control w-[50%]">
                         <div className="label">
                             <span className="label-text">Rating ?</span>
                         </div>
-                        <input type="text" placeholder="rating" className="input input-bordered w-full" name="rating" />
+                        <input type="text" placeholder="rating" className="input input-bordered w-full" name="rating" required />
                     </label>
                     <label className="form-control w-[50%]">
                         <div className="label">
@@ -63,11 +84,18 @@ const UpDatePage = () => {
                         </div>
                         <input type="text" placeholder="Item-name" className="input input-bordered w-full" name="itemname" required />
                     </label>
-                    <label className="form-control w-[50%]">
+                    <label className="form-control w-full max-w-xs">
                         <div className="label">
-                            <span className="label-text">Sub-Category Name</span>
+                            <span className="label-text">Sub-Category</span>
                         </div>
-                        <input type="text" placeholder="Subcategory" className="input input-bordered w-full" name="subcategory" />
+                        <select className="select select-bordered" name='subcategory' required>
+                            <option selected>Wooden Furnitures and sculptures</option>
+                            <option>Wooden Home Decor</option>
+                            <option>Woodrn Utensils and Kitchenare</option>
+                            <option>Jute Home Decor</option>
+                            <option>Jute KitchenWare and utensils</option>
+                            <option>Jute and wooden jewellery</option>
+                        </select>
                     </label>
                 </div>
                 <div className="flex border border-black gap-2 w-[80%] mx-auto">
@@ -76,13 +104,17 @@ const UpDatePage = () => {
                         <div className="label">
                             <span className="label-text">What is the Price ?</span>
                         </div>
-                        <input type="text" placeholder="price" className="input input-bordered w-full" name="price" />
+                        <input type="text" placeholder="price" className="input input-bordered w-full" name="price" required />
                     </label>
-                    <label className="form-control w-[50%]">
+                    <label className="form-control w-full max-w-xs">
                         <div className="label">
-                            <span className="label-text">Is it Customizable?</span>
+                            <span className="label-text">Customization</span>
+
                         </div>
-                        <input type="text" placeholder="customization (yes/no)" className="input input-bordered w-full" name="customization" />
+                        <select className="select select-bordered" name='customization'>
+                            <option selected>Yes</option>
+                            <option>No</option>
+                        </select>
                     </label>
                     <label className="form-control w-[50%]">
                         <div className="label">
@@ -90,11 +122,14 @@ const UpDatePage = () => {
                         </div>
                         <input type="text" placeholder="time" className="input input-bordered w-full" name="processingtime" />
                     </label>
-                    <label className="form-control w-[50%]">
+                    <label className="form-control w-full max-w-xs">
                         <div className="label">
-                            <span className="label-text">Stock Status ?</span>
+                            <span className="label-text">What is the stock status?</span>
                         </div>
-                        <input type="text" placeholder="stock" className="input input-bordered w-full" name="stockstatus" />
+                        <select className="select select-bordered" name='stockstatus'>
+                            <option selected>In Stock</option>
+                            <option>Made To Order</option>
+                        </select>
                     </label>
                 </div>
                 <div className="flex border border-black gap-2 w-[80%] mx-auto">

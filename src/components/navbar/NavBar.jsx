@@ -9,6 +9,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import Swal from 'sweetalert2';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import juteImage from "../../assets/images/jute.png";
+import "../../main.css"
 
 
 const NavBar = () => {
@@ -101,7 +103,7 @@ const NavBar = () => {
                         {navmenus}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <div className="flex items-center"><img src={juteImage} alt="" className="w-12 h-12"/><span className="text-xl font semibold text-black font-main">JuteMania</span></div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 flex gap-1">
