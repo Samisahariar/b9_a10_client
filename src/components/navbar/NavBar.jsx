@@ -1,7 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { useState, useRef } from "react";
 import google from "../../assets/images/google-symbol.png";
 import github from "../../assets/images/github.png"
 import { AuthContext } from "../authcontextdata/AuthContextData";
@@ -15,37 +13,15 @@ import "../../main.css"
 
 const NavBar = () => {
 
-    const { user, loader, setLoader,  logOut, signIn, setUser, setUserData } = useContext(AuthContext);
+    const { user, loader, setLoader,  logOut, signIn, setUser, setUserData, googlelogin } = useContext(AuthContext);
 
     const navigate = useNavigate();
 
-    const handletoRegister = () => {
-        navigate('/register')
-    }
-    const handlethelogin = (event) => {
-        setLoader(true)
-        event.preventDefault()
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        signIn(email, password)
-            .then(res => {
-                setUser(res.user)
-                setLoader(false)
-                toast.success('LOG-IN SUCCESSFULL', {
-                    position: "top-right",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                    });
-            })
-            .cath(error => console.log(error.message))
-    }
+   
 
+    const handlethelogin = () =>{
+        navigate('/login')
+    }
 
     const handlelogout = () => {
         Swal.fire({
@@ -67,10 +43,9 @@ const NavBar = () => {
                         });
                         setUserData(null)
                     })
-
             }
         });
-    }
+    };
 
     const navmenus = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -120,57 +95,8 @@ const NavBar = () => {
                     />
                 }
                 {
-                    user ? <button className="btn btn-primary" onClick={handlelogout}>Log-Out</button> : <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()} >Login</button>
+                    user ? <button className="btn btn-primary" onClick={handlelogout}>Log-Out</button> : <button className="btn" onClick={() => handlethelogin()} >Login</button>
                 }
-                <dialog id="my_modal_1" className="modal">
-                    <div className="modal-box">
-                        <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                        </form>
-                        <>
-                            <form className="card-body" onSubmit={handlethelogin} method="dialog">
-                                <h3 className="text-center text-3xl font-semibold">LOG-IN</h3>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Email</span>
-                                    </label>
-                                    <input type="email"
-                                        placeholder="email"
-                                        name="email"
-                                        /* ref={emailRef} */
-                                        className="input input-bordered" required />
-                                </div>
-                                <div className="form-control">
-                                    <label className="label">
-                                        <span className="label-text">Password</span>
-                                    </label>
-                                    <input type="password" placeholder="password" name="password" className="input input-bordered" required />
-                                </div>
-                                <p className="text-center">Also log-in With :</p>
-                                <div className="flex justify-center gap-2">
-                                    <img src={google} alt="" className="w-8 h-8 cursor-pointer border border-1 border-white rounded-full p-2" />
-                                    <img src={github} alt="" className="w-8 h-8 cursor-pointer border border-1 border-white rounded-full p-1" />
-                                </div>
-                                <div className="form-control flex justify-center">
-                                    {
-                                        loader ? <ClipLoader
-                                            loading={loader}
-                                            size={50}
-                                            aria-label="Loading Spinner"
-                                            data-testid="loader"
-
-                                        ></ClipLoader> : user ? <button className="btn btn-primary" onClick={handlelogout}>Log-Out</button> : <input type="submit" value="Log-In" className="btn btn-primary" />
-                                    }
-
-                                </div>
-                            </form>
-                            <form method="dialog">
-                                <div>Are You new ? <button className="text-blue-500" onClick={handletoRegister}>Register</button></div>
-                            </form>
-                        </>
-                    </div>
-                </dialog>
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
                         <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />

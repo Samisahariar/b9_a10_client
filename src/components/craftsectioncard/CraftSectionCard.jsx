@@ -1,9 +1,13 @@
 import { FaRegClock } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 const CraftSectionCard = ({ singleCard }) => {
 
+    const navigate = useNavigate()
+
     const { customization, description, itemname, photo, price, processingtime, rating, stockstatus, subcategory, _id } = singleCard
+    
     const handleviewdetails = (id) => {
-        console.log(id)
+        navigate(`/craftSection/${id}`)
     }
 
     const slicedDes = description?.slice(1, 100);

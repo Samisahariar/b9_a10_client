@@ -11,7 +11,7 @@ const My_Art_Craft_List = () => {
     const { email } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/${email}`, {
+        fetch(`https://b9-a10-server-six.vercel.app/${email}`, {
             method: 'GET'
         })
             .then(res => res.json())
@@ -29,12 +29,12 @@ const My_Art_Craft_List = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/del/${id}`, {
+                fetch(`https://b9-a10-server-six.vercel.app/del/${id}`, {
                     method: 'PUT'
                 })
                     .then(res => {
                         if (res.status === 200) {
-                            fetch(`http://localhost:5000/${email}`, {
+                            fetch(`https://b9-a10-server-six.vercel.app/${email}`, {
                                 method: 'GET'
                             })
                                 .then(res => res.json())

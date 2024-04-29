@@ -25,7 +25,7 @@ const UpDatePage = () => {
         const stockstatus = form.stockstatus.value;
         const description = form.description.value;
         const newItem = { email, username, photo, rating, itemname, subcategory, price, customization, processingtime, stockstatus, description }
-        fetch(`http://localhost:5000/updatepage/${id}`, {
+        fetch(`https://b9-a10-server-n2a0a8csb-sami-sahariars-projects.vercel.app/updatepage/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

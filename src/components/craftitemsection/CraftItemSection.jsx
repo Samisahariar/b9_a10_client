@@ -10,7 +10,7 @@ const CraftItemSection = () => {
     const { loader, setLoader } = useContext(AuthContext)
 
     useEffect(() => {
-        fetch('http://localhost:5000/homepage')
+        fetch('https://b9-a10-server-six.vercel.app/homepage')
             .then(res => res.json())
             .then(data => {
                 setHomedata(data)

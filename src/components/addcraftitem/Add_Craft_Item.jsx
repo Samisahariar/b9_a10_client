@@ -19,7 +19,7 @@ const Add_Craft_Item = () => {
         const stockstatus = form.stockstatus.value;
         const description = form.description.value;
         const newItem = { email, username, photo, rating, itemname, subcategory, price, customization, processingtime, stockstatus, description }
-        fetch(`http://localhost:5000/data`, {
+        fetch(`https://b9-a10-server-six.vercel.app/data`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

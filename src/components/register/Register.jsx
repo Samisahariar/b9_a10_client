@@ -15,8 +15,11 @@ const Register = () => {
     const navigate = useNavigate();
 
     const tohomepage = () => {
-        navigate("/")
-        document.getElementById('my_modal_1').showModal()
+        navigate("/login")
+    }
+
+    const tothelogin = () =>{
+        navigate("/login")
     }
 
     const handleSubmitRegister = (event) => {
@@ -102,7 +105,7 @@ const Register = () => {
                 {/* {
                     error && <p className="text-red-600">{error}</p>
                 } */}
-                <p>Already Have An Account ? <span onClick={() => document.getElementById('my_modal_1').showModal()} >Login</span></p>
+                <p>Already Have An Account ? <span className="text-blue-600 cursor-pointer" onClick={() => tothelogin()}>Login</span></p>
                 <div className="form-control mt-6">
                     <button className="btn btn-primary" type="submit">Register</button>
                 </div>

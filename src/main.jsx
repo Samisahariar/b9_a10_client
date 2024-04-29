@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       {
         path: "/allartandcraft",
         element: <AllArtAndCraft></AllArtAndCraft>,
-        loader: () => fetch("http://localhost:5000/alldata")
+        loader: () => fetch("https://b9-a10-server-six.vercel.app/alldata")
       },
       {
         path: "/login",
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/myartcraft/:email",
         element: <Private><My_Art_Craft_List></My_Art_Craft_List></Private>,
-        loader: ({params}) => params.email
+        loader: ({ params }) => params.email
       },
       {
         path: "/addcraftitem",
@@ -53,12 +53,21 @@ const router = createBrowserRouter([
       {
         path: "/carddetails/:id",
         element: <Private><CardDetails></CardDetails></Private>,
-        loader: ({params}) => fetch(`http://localhost:5000/user/${params.id}`)
+        loader: ({ params }) => fetch(`https://b9-a10-server-six.vercel.app/user/${params.id}`)
       },
       {
         path: "/updatepage/:id",
         element: <UpDatePage></UpDatePage>,
-        loader: ({params}) => params.id
+        loader: ({ params }) => params.id
+      },
+      {
+        path: "/craftSection/:id",
+        element: <CardDetails></CardDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/craftSection/${params.id}`)
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
       }
     ]
   },
