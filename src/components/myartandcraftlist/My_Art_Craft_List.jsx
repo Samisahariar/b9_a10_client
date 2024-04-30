@@ -1,12 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../authcontextdata/AuthContextData";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Card from "../card/Card";
 import Swal from 'sweetalert2';
 
 const My_Art_Craft_List = () => {
-    const { user, userData, setUserData } = useContext(AuthContext);
+    const { userData, setUserData } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [yes, setYes] = useState(null)
 
     const { email } = useParams();
 
@@ -49,7 +50,6 @@ const My_Art_Craft_List = () => {
                         }
                     })
                     .catch(error => console.log(error))
-
             }
         });
     }
@@ -58,12 +58,44 @@ const My_Art_Craft_List = () => {
         navigate(`/updatepage/${id}`)
     }
 
+    const handlethesortby = () =>{
+        const customizationYes = userData.filter((singledata) => singledata.customization === "Yes");
+        setYes(customizationYes)
+    }
+
+    const handlethesortbyno = () =>{
+        const customizationNo = userData.filter((singledata) => singledata.customization === "No");
+        setYes(customizationNo)
+    }
+
+    const handlethesortbyall = () =>{
+        setYes(userData)
+    }
+
     return (
-        <div className="bg-white dark:bg-black mt-[5%] grid grid-cols-2 p-2 gap-2">
-            {
-                userData?.map((singleData, idx) => <Card data={singleData} key={idx} handlededitbutton={handlededitbutton} handledelbutton={handledelbutton}></Card>)
-            }
+        <div>
+            <div className="flex flex-col justify-center items-center">
+                <p>Filter By Customization:</p>
+                <div className="dropdown dropdown-bottom">
+                    <div tabIndex={0} role="button" className="btn m-1">Click</div>
+                    <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li onClick={() => handlethesortbyall()}><a>All</a></li>
+                        <li onClick={() => handlethesortby()}><a>Yes</a></li>
+                        <li onClick={() => handlethesortbyno()}><a>No</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div className="bg-white dark:bg-black mt-[5%] grid grid-cols-2 p-2 gap-2">
+                {
+                    !yes && userData?.map((singleData, idx) => <Card data={singleData} key={idx} handlededitbutton={handlededitbutton} handledelbutton={handledelbutton}></Card>)
+                }
+                {
+                    yes && yes.map((singleData, idx) => <Card data={singleData} key={idx} handlededitbutton={handlededitbutton} handledelbutton={handledelbutton}></Card>)
+                }
+            </div>
         </div>
+
     );
 };
 

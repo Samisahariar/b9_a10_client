@@ -16,6 +16,7 @@ import Register from './components/register/Register.jsx';
 import Private from './components/private/Private.jsx';
 import CardDetails from './components/cardDetails/CardDetails.jsx';
 import UpDatePage from './components/updatepage/UpDatePage.jsx';
+import CardDetailsHome from './components/CardDetailsHome.jsx/CardDetailsHome.jsx';
 
 
 
@@ -61,9 +62,9 @@ const router = createBrowserRouter([
         loader: ({ params }) => params.id
       },
       {
-        path: "/craftSection/:id",
-        element: <CardDetails></CardDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/craftSection/${params.id}`)
+        path: "/craftSection/:subcategory",
+        element: <CardDetailsHome></CardDetailsHome>,
+        loader: ({ params }) => fetch(`https://b9-a10-server-six.vercel.app/craftSection/${params.subcategory}`)
       },
       {
         path: "/login",

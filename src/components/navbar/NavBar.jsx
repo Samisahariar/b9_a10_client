@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import google from "../../assets/images/google-symbol.png";
 import github from "../../assets/images/github.png"
 import { AuthContext } from "../authcontextdata/AuthContextData";
@@ -8,18 +8,21 @@ import Swal from 'sweetalert2';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import juteImage from "../../assets/images/jute.png";
-import "../../main.css"
+import "../../main.css";
+import "../../App.css";
+import { HeartSwitch } from '@anatoliygatt/heart-switch';
 
 
 const NavBar = () => {
 
-    const { user, loader, setLoader,  logOut, signIn, setUser, setUserData, googlelogin } = useContext(AuthContext);
+    const { user, loader, setLoader, logOut, signIn, setUser, setUserData, googlelogin } = useContext(AuthContext);
 
     const navigate = useNavigate();
+    const [checked, setChecked] = useState(false);
 
-   
 
-    const handlethelogin = () =>{
+
+    const handlethelogin = () => {
         navigate('/login')
     }
 
@@ -46,6 +49,16 @@ const NavBar = () => {
             }
         });
     };
+
+    const darkmode = (checked) => {
+        console.log(checked)
+        const thewholehtml = document.getElementById("html")
+        if (!checked) {
+            thewholehtml.classList.add("dark")
+        } else {
+            thewholehtml.classList.remove("dark")
+        }
+    }
 
     const navmenus = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -78,7 +91,7 @@ const NavBar = () => {
                         {navmenus}
                     </ul>
                 </div>
-                <div className="flex items-center"><img src={juteImage} alt="" className="w-12 h-12"/><span className="text-xl font semibold text-black font-main">JuteMania</span></div>
+                <div className="flex items-center"><img src={juteImage} alt="" className="w-12 h-12" /><span className="text-xl font semibold text-black font-tita">JuteMania</span></div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 flex gap-1">
@@ -86,6 +99,19 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                <HeartSwitch
+                    size="lg"
+                    inactiveTrackFillColor="#cffafe"
+                    inactiveTrackStrokeColor="#22d3ee"
+                    activeTrackFillColor="#06b6d4"
+                    activeTrackStrokeColor="#0891b2"
+                    inactiveThumbColor="#ecfeff"
+                    activeThumbColor="#ecfeff"
+                    checked={checked}
+                    onChange={(event) => {
+                        setChecked(event.target.checked)
+                        darkmode(checked)
+                    }}></HeartSwitch>
                 {
                     loader && <ClipLoader
                         loading={loader}

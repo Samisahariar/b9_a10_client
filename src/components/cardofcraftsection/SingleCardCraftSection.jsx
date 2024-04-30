@@ -2,23 +2,19 @@ import { IoIosPricetag } from "react-icons/io";
 import { IoTimerSharp } from "react-icons/io5";
 import { FaHammer } from "react-icons/fa";
 import { FcRating } from "react-icons/fc";
-import { MdEditSquare } from "react-icons/md";
-import { MdDeleteForever } from "react-icons/md";
-import { MdFavoriteBorder } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../authcontextdata/AuthContextData";
-import { CgDetailsMore } from "react-icons/cg";
 
-const Card = ({ data, handlededitbutton, handledelbutton }) => {
-    const navigate = useNavigate()
 
-    const { customization, description, itemname, photo, price, processingtime, rating, stockstatus, subcategory, _id } = data
+
+const SingleCardCraftSection = ({ singledatahome }) => {
+
+    const navigate = useNavigate();
+
+    const { customization, description, itemname, photo, price, processingtime, rating, stockstatus, subcategory, _id } = singledatahome
+
     const slicedDes = description.slice(1, 80);
 
-    const { userData, setUserData } = useContext(AuthContext)
-
-    const tothecarddetails = (id) => {
+    const handletheviewdetails = (id) => {
         navigate(`/carddetails/${id}`)
     }
 
@@ -41,16 +37,13 @@ const Card = ({ data, handlededitbutton, handledelbutton }) => {
                         <span className="flex items-center text-md gap-1"><FcRating />{rating}</span>
                         <span className="flex items-center text-md gap-1"><IoTimerSharp />{processingtime}</span>
                     </div>
-
-                </div>
-                <div className="join join-vertical gap-1">
-                    <button className="btn text-xl" onClick={() => handlededitbutton(_id)}><MdEditSquare /></button>
-                    <button className="btn text-xl" onClick={() =>handledelbutton(_id)}><MdDeleteForever /></button>
-                    <button className="btn text-xl" onClick={() =>tothecarddetails(_id)}><CgDetailsMore /></button>
+                    <div>
+                        <button className="btn" onClick={() => handletheviewdetails(_id)}>View Details</button>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Card;
+export default SingleCardCraftSection;

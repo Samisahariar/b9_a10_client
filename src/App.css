@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=Anton&family=Cantora+One&family=DM+Serif+Display:ital@0;1&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lexend:wght@100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+.font-tita {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
 
 [class^="number-slide"],
 [class*=" number-slide"] {
