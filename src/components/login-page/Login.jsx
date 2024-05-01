@@ -85,9 +85,9 @@ const Login = () => {
         });
     };
     return (
-        <div>
+        <div className='dark:bg-base-200 bg-white px-[20%]'>
             <form className="card-body" onSubmit={handlethelogin} method="dialog">
-                <h3 className="text-center text-3xl font-semibold">LOG-IN</h3>
+                <h3 className="text-center text-3xl font-semibold dark:text-[#378CE7] text-[#FF204E]">LOG-IN</h3>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Email</span>
@@ -105,13 +105,12 @@ const Login = () => {
                     <input type="password" placeholder="password" name="password" className="input input-bordered" required />
                 </div>
                 <p className="text-center">Also log-in With :</p>
-                <div className="flex justify-center gap-2">
-                    <p className="text-center">Also log-in With :</p>
+                <div className="flex flex-col gap-2">
                     <div className="flex justify-center gap-2">
                         <img src={google} alt="" className="w-8 h-8 cursor-pointer border border-1 border-white rounded-full p-2" onClick={() => handlethegoogle()}/>
                         <img src={github} alt="" className="w-8 h-8 cursor-pointer border border-1 border-white rounded-full p-1" onClick={ () => handlethegitlogin()}/>
                     </div>
-                    <div className="form-control flex justify-center">
+                    <div className="form-control">
                         {
                             loader ? <ClipLoader
                                 loading={loader}
@@ -126,7 +125,7 @@ const Login = () => {
                 </div>
 
             </form>
-            <div>Are You new ? <button className="text-blue-500" onClick={handletoRegister}>Register</button></div>
+            <div className='text-center'>Are You new ? <button className="text-blue-500" onClick={handletoRegister}>Register</button></div>
         </div>
     );
 };

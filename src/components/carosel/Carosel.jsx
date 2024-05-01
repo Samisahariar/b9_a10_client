@@ -2,7 +2,7 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import "../../App.css"
 import 'animate.css';
-import { Link } from "react-router-dom";
+import { Typewriter } from 'react-simple-typewriter'
 
 
 const Carosel = () => {
@@ -47,22 +47,14 @@ const Carosel = () => {
 
   return (
     <>
-      <div ref={sliderRef} className="keen-slider h-[80vh] relative">
+      <div ref={sliderRef} className="keen-slider h-[80vh] relative w-[90%] mx-auto">
         <div className="keen-slider__slide number-slide1"></div>
         <div className="keen-slider__slide number-slide2"></div>
         <div className="keen-slider__slide number-slide3"></div>
         <div className="keen-slider__slide number-slide4"></div>
-        <div className="hero-overlay bg-opacity-30 h-[100vh]  w-[100vw] absolute top-0 flex justify-center items-center flex-col gap-3">
-          <p className="text-md text-white tracking-widest animate__animated animate__fadeInUp">San Diego Real Estate Experts</p>
-          <h3 className="lg:text-6xl text-4xl md:text-5xl text-white text-center tracking-widest animate__animated animate__fadeInUp font-dm">Top Real Estate
-            <br />Listings in San Diego</h3>
-          <p className="text-xs text-white tracking-wide animate__animated animate__fadeInUp md:text-start text-center">Providing The Most Comprehensive And Distinguished Real Estate Services.</p>
-          <div>
-            <div>
-              <Link to="/land"><button className="p-3 border-2 border-white text-white hover:bg-[#E1F0DA26]">Search For Properties</button></Link>
-            </div>
-
-          </div>
+        <div className="hero-overlay bg-opacity-30 h-[80vh]  w-[100vw] absolute top-0 flex justify-center items-center flex-col gap-3">
+          <h3 className="lg:text-6xl text-4xl md:text-5xl text-white text-center tracking-widest animate__animated animate__fadeInUp font-tita">Jute And
+            <br />wooden <span className="text-[#FF204E] dark:text-[#378CE7]"><Typewriter words={["Craft"]} /></span></h3>
         </div>
       </div>
     </>

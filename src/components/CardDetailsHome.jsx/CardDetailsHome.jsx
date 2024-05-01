@@ -8,7 +8,7 @@ const CardDetailsHome = () => {
     console.log(subcategotydata)
     
     return (
-        <div>
+        <div className='px-[10%] dark:bg-base-200 bg-white gap-2 grid pt-[2%]'>
             {
                 subcategotydata?.map((singledatahome, idx) => <SingleCardCraftSection singledatahome={singledatahome} key={idx}></SingleCardCraftSection>)
             }

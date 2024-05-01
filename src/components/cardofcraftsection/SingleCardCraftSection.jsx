@@ -19,7 +19,7 @@ const SingleCardCraftSection = ({ singledatahome }) => {
     }
 
     return (
-        <div className="card card-side bg-base-100 shadow-xl cursor-pointer">
+        <div className="card card-side dark:bg-base-100 shadow-xl cursor-pointer bg-white text-black font-semibold dark:text-white">
             <div className="w-[40%]"><img src={photo} alt="Movie" className="rounded-xl bg-cover" /></div>
             <div className=" flex justify-between border-white border w-[60%] items-center">
                 <div className=" space-y-1 p-1">

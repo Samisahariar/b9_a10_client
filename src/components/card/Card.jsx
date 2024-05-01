@@ -23,7 +23,7 @@ const Card = ({ data, handlededitbutton, handledelbutton }) => {
     }
 
     return (
-        <div className="card card-side bg-base-100 shadow-xl cursor-pointer">
+        <div className="card card-side dark:bg-base-100  cursor-pointer bg-white text-black border-1 border shadow-xl dark:text-white">
             <div className="w-[40%]"><img src={photo} alt="Movie" className="rounded-xl bg-cover" /></div>
             <div className=" flex justify-between border-white border w-[60%] items-center">
                 <div className=" space-y-1 p-1">
@@ -44,7 +44,7 @@ const Card = ({ data, handlededitbutton, handledelbutton }) => {
 
                 </div>
                 <div className="join join-vertical gap-1">
-                    <button className="btn text-xl" onClick={() => handlededitbutton(_id)}><MdEditSquare /></button>
+                    <button className="btn text-xl dark:bg-[#378CE7] bg-[]" onClick={() => handlededitbutton(_id)}><MdEditSquare /></button>
                     <button className="btn text-xl" onClick={() =>handledelbutton(_id)}><MdDeleteForever /></button>
                     <button className="btn text-xl" onClick={() =>tothecarddetails(_id)}><CgDetailsMore /></button>
                 </div>

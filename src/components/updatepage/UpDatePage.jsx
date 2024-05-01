@@ -25,7 +25,7 @@ const UpDatePage = () => {
         const stockstatus = form.stockstatus.value;
         const description = form.description.value;
         const newItem = { email, username, photo, rating, itemname, subcategory, price, customization, processingtime, stockstatus, description }
-        fetch(`https://b9-a10-server-n2a0a8csb-sami-sahariars-projects.vercel.app/updatepage/${id}`, {
+        fetch(`https://b9-a10-server-six.vercel.app/updatepage/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -34,7 +34,6 @@ const UpDatePage = () => {
         })
 
             .then(res => {
-                console.log(res)
                 Swal.fire({
                     position: "middle",
                     icon: "success",
@@ -43,15 +42,16 @@ const UpDatePage = () => {
                     timer: 1500
                 });
             })
+            .catch(error => console.error(error))
 
     }
 
 
     return (
-        <div className="mt-[5%] p-10 bg-white dark:bg-slate-600">
+        <div className="p-10 bg-white dark:bg-base-200">
             <h3 className='text-center text-4xl font-semibold'>Up-Date Any Data!!!</h3>
             <form onSubmit={handletheUpdateCraft} className="space-y-2">
-                <div className="flex border border-black gap-2 w-[80%] mx-auto">
+                <div className="flex gap-2 w-[80%] mx-auto">
                     <label className="form-control w-[50%]">
                         <div className="label">
                             <span className="label-text">What is your E-Mail?</span>
@@ -65,7 +65,7 @@ const UpDatePage = () => {
                         <input type="text" placeholder="User-Name" className="input input-bordered w-full" name="username" required />
                     </label>
                 </div>
-                <div className="flex border border-black gap-2 w-[80%] mx-auto">
+                <div className="flex gap-2 w-[80%] mx-auto">
                     <label className="form-control w-[50%]">
                         <div className="label">
                             <span className="label-text">Photo-URL</span>
@@ -98,7 +98,7 @@ const UpDatePage = () => {
                         </select>
                     </label>
                 </div>
-                <div className="flex border border-black gap-2 w-[80%] mx-auto">
+                <div className="flex gap-2 w-[80%] mx-auto">
 
                     <label className="form-control w-[50%]">
                         <div className="label">
@@ -132,7 +132,7 @@ const UpDatePage = () => {
                         </select>
                     </label>
                 </div>
-                <div className="flex border border-black gap-2 w-[80%] mx-auto">
+                <div className="flex gap-2 w-[80%] mx-auto">
                     <label className="form-control w-full">
                         <div className="label">
                             <span className="label-text">Description</span>

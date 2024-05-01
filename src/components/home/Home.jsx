@@ -1,12 +1,16 @@
+import Accordian from "../accordian/Accordian";
 import Carosel from "../carosel/Carosel";
 import CraftItemSection from "../craftitemsection/CraftItemSection";
+import DIvider from "../divider/DIvider";
 
 const Home = () => {
     return (
         <>
-            <div className="p-10 dark:bg-slate-600 bg-white">
+            <div className="dark:bg-base-200 bg-white">
                 <Carosel></Carosel>
                 <CraftItemSection></CraftItemSection>
+                <DIvider></DIvider>
+                <Accordian></Accordian>
             </div>
         </>
     );

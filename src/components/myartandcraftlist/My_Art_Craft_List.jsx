@@ -7,8 +7,7 @@ import Swal from 'sweetalert2';
 const My_Art_Craft_List = () => {
     const { userData, setUserData } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [yes, setYes] = useState(null)
-
+    const [yes, setYes] = useState(null);
     const { email } = useParams();
 
     useEffect(() => {
@@ -73,7 +72,7 @@ const My_Art_Craft_List = () => {
     }
 
     return (
-        <div>
+        <div className="dark:bg-base-200 bg-white px-[5%]">
             <div className="flex flex-col justify-center items-center">
                 <p>Filter By Customization:</p>
                 <div className="dropdown dropdown-bottom">
@@ -82,11 +81,10 @@ const My_Art_Craft_List = () => {
                         <li onClick={() => handlethesortbyall()}><a>All</a></li>
                         <li onClick={() => handlethesortby()}><a>Yes</a></li>
                         <li onClick={() => handlethesortbyno()}><a>No</a></li>
-                        
                     </ul>
                 </div>
             </div>
-            <div className="bg-white dark:bg-black mt-[5%] grid grid-cols-2 p-2 gap-2">
+            <div className="bg-white dark:bg-base-200 mt-[5%] grid md:grid-cols-2 p-2 gap-2 grid-cols-1">
                 {
                     !yes && userData?.map((singleData, idx) => <Card data={singleData} key={idx} handlededitbutton={handlededitbutton} handledelbutton={handledelbutton}></Card>)
                 }
