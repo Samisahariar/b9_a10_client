@@ -41,8 +41,9 @@ const Add_Craft_Item = () => {
 
     return (
         <div className="mt-[5%] p-10 bg-white dark:bg-slate-600">
+            <h3 className='text-black dark:text-white font-semibold text-xl md:text-2xl lg:text-4xl text-center'>ADD a <span className='dark:text-[#378CE7] text-[#FF204E]'>Craft</span> Item</h3>
             <form onSubmit={handletheaddCraft} className="space-y-2">
-                <div className="flex border border-black gap-2 w-[80%] mx-auto">
+                <div className="flex gap-2 w-[80%] mx-auto">
                     <label className="form-control w-[50%]">
                         <div className="label">
                             <span className="label-text">What is your E-Mail?</span>
@@ -56,7 +57,7 @@ const Add_Craft_Item = () => {
                         <input type="text" placeholder="User-Name" className="input input-bordered w-full" name="username" />
                     </label>
                 </div>
-                <div className="flex border border-black gap-2 w-[80%] mx-auto">
+                <div className="flex gap-2 w-[80%] mx-auto">
 
                     <label className="form-control w-[50%]">
                         <div className="label">
@@ -90,7 +91,7 @@ const Add_Craft_Item = () => {
                         </select>
                     </label>
                 </div>
-                <div className="flex border border-black gap-2 w-[80%] mx-auto">
+                <div className="flex gap-2 w-[80%] mx-auto">
 
                     <label className="form-control w-[50%]">
                         <div className="label">
@@ -124,7 +125,7 @@ const Add_Craft_Item = () => {
                         </select>
                     </label>
                 </div>
-                <div className="flex border border-black gap-2 w-[80%] mx-auto">
+                <div className="flex gap-2 w-[80%] mx-auto">
                     <label className="form-control w-full">
                         <div className="label">
                             <span className="label-text">Description</span>

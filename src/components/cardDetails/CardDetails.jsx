@@ -13,7 +13,7 @@ const CardDetails = () => {
     const { customization, description, itemname, photo, price, processingtime, rating, stockstatus, subcategory, _id } = data
 
     return (
-        <div className="mt-[5%]">
+        <div className="dark:bg-base-200 bg-white text-black dark:text-white">
             <div className="keen-slider h-[50vh] relative">
                 <div className="third_banner"><img src={photo} alt="" className="w-[100vw] h-[50vh] bg-center" /></div>
                 <div className="hero-overlay bg-opacity-30 h-[50vh] w-full absolute top-0 flex justify-center items-center flex-col gap-3">
@@ -21,11 +21,10 @@ const CardDetails = () => {
                 </div>
             </div>
             <div className="p-2">
-                <span className="px-3 py-1 text-white bg-[#637E76] rounded-xl ml-2">#{subcategory}</span>
+                <span className="px-3 py-1 text-white bg-[#FF204E] rounded-xl ml-2 dark:bg-[#378CE7] dark:text-black">#{subcategory}</span>
                 <div className="flex md:justify-between items-center md:flex-row flex-col text-center">
                     <div>
                         <h3 className="lg:text-4xl font-semibold font-dm text-2xl md:text-3xl">{itemname}</h3>
-                        <span className="flex items-center gap-2 text-xs mt-2">lopcatin</span>
                     </div>
                     <div className="">
                         <h3 className=" text-4xl font-semibold text-end font-dm">${price}</h3>
@@ -36,7 +35,7 @@ const CardDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div className=" bg-white p-3 space-y-2 rounded-xl mt-10">
+                <div className="bg-white p-3 space-y-2 rounded-xl mt-10 shadow-xl dark:bg-base-200">
                     <p className="font-semibold">Overview :</p>
                     <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-3">
                         <div>
@@ -53,7 +52,7 @@ const CardDetails = () => {
                         </div>
                         <div>
                             <p>Rating :</p>
-                            <p><FcRating></FcRating>{rating}</p>
+                            <p className="flex items-center gap-1"><FcRating></FcRating>{rating}</p>
                         </div>
                         <div>
                             <p>Stock Status :</p>
@@ -61,7 +60,7 @@ const CardDetails = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bg-white p-3 rounded-xl mt-10">
+                <div className="bg-white p-3 rounded-xl mt-10 dark:bg-base-200">
                     <span className="font-semibold">Description :</span><br />
                     {description}
                 </div>

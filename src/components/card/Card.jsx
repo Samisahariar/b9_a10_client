@@ -23,9 +23,9 @@ const Card = ({ data, handlededitbutton, handledelbutton }) => {
     }
 
     return (
-        <div className="card card-side dark:bg-base-100  cursor-pointer bg-white text-black border-1 border shadow-xl dark:text-white">
+        <div className="card card-side dark:bg-base-100  cursor-pointer bg-white text-black shadow-xl dark:text-white">
             <div className="w-[40%]"><img src={photo} alt="Movie" className="rounded-xl bg-cover" /></div>
-            <div className=" flex justify-between border-white border w-[60%] items-center">
+            <div className=" flex justify-between w-[60%] items-center">
                 <div className=" space-y-1 p-1">
                     <h2 className="text-xl font-semibold">{itemname}</h2>
                     <span className="text-xs">#{subcategory}</span>
